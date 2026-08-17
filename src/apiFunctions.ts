@@ -11,6 +11,17 @@ export async function getMovies(url: string): Promise<Movie[]> {
     return await response.json();
 }
 
+export async function getMovieDetails(id: number, url: string): Promise<Movie | null> {
+    const response = await fetch(`${url}/${id}/details`);
+
+    if (!response.ok) {
+        console.error(`HTTP ${response.status}`);
+        return null;
+    }
+
+    return await response.json();
+}
+
 export async function saveMovie(movie: MovieInput, url: string): Promise<Movie | null> {
     const response = await fetch(url, {
         method: "POST",
