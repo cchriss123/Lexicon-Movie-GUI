@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router";
 import type { Movie } from "./models.ts";
 import { getMovieDetails } from "./apiFunctions.ts";
 import { API_URL } from "./config.ts";
+import ReviewForm from "./ReviewForm.tsx";
 
 export default function MovieDetails() {
     const { id } = useParams();
@@ -35,6 +36,21 @@ export default function MovieDetails() {
                 ← Back to movies
             </Link>
             <pre>{JSON.stringify(movie, null, 2)}</pre>
+
+            <ReviewForm
+                movieId={movie.id}
+                onReviewAdded={review =>
+                    setMovie(current =>
+                        current
+                            ? {
+                                ...current,
+                                reviews: [...current.reviews, review],
+                            }
+                            : current
+                    )
+                }
+            />
+
         </div>
     );
 }

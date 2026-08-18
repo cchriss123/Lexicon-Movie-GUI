@@ -68,3 +68,28 @@ export async function deleteMovie(id: number, url: string, ): Promise<boolean> {
     return true;
 }
 
+export async function postReview(
+    movieId: number,
+    review: {
+        reviewerName: string;
+        comment: string;
+        rating: number;
+    },
+    url: string
+) {
+    const response = await fetch(`${url}/${movieId}/reviews`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(review),
+    });
+
+    if (!response.ok) {
+        console.error(`HTTP ${response.status}`);
+        return null;
+    }
+
+    return await response.json();
+}
+
