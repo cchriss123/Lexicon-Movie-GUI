@@ -7,6 +7,9 @@ export interface Movie {
     movieDetails: MovieDetail | null;
     reviews: Review[];
     actors: Actor[];
+    language?: string;
+    budget?: number;
+    synopsis?: string;
 }
 
 export interface MovieInput {

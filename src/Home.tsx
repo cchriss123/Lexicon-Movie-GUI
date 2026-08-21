@@ -30,7 +30,10 @@ export default function Home() {
 
     return (
         <>
-            <h1 className="text-4xl text-center">Movie App</h1>
+
+            <h1 className="text-4xl text-center p-8">
+                Movie App
+            </h1>
 
             <main className="w-5/6 mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -46,46 +46,52 @@ export default function ReviewForm({ movieId, onReviewAdded }: Props) {
     }
 
     return (
-        <form
-            className="mt-4 grid max-w-md gap-2"
-            onSubmit={e => {
-                e.preventDefault();
-                handleSubmit();
-            }}
-        >
-            <input
-                className="border p-2"
-                type="text"
-                placeholder="Your name"
-                value={reviewerName}
-                onChange={e => setReviewerName(e.target.value)}
-            />
-
-            <textarea
-                className="border p-2"
-                placeholder="Write a review"
-                value={comment}
-                onChange={e => setComment(e.target.value)}
-            />
-
-            <select
-                className="border p-2"
-                value={rating}
-                onChange={e => setRating(Number(e.target.value))}
+        <div className="p-6 ">
+            <form
+                className="border p-3"
+                onSubmit={e => {
+                    e.preventDefault();
+                    handleSubmit();
+                }}
             >
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-            </select>
+                <h2 className="text-xl font-bold">Add Review</h2>
 
-            <button
-                className="border p-2 hover:bg-gray-100"
-                type="submit"
-            >
-                Add Review
-            </button>
-        </form>
+                <div className="mt-3 grid gap-2">
+                    <input
+                        className="border p-2"
+                        type="text"
+                        placeholder="Your name"
+                        value={reviewerName}
+                        onChange={e => setReviewerName(e.target.value)}
+                    />
+
+                    <textarea
+                        className="border p-2"
+                        placeholder="Write a review"
+                        value={comment}
+                        onChange={e => setComment(e.target.value)}
+                    />
+
+                    <select
+                        className="border p-2"
+                        value={rating}
+                        onChange={e => setRating(Number(e.target.value))}
+                    >
+                        <option value={1}>1</option>
+                        <option value={2}>2</option>
+                        <option value={3}>3</option>
+                        <option value={4}>4</option>
+                        <option value={5}>5</option>
+                    </select>
+
+                    <button
+                        className="border p-2 font-bold hover:bg-gray-100"
+                        type="submit"
+                    >
+                        Add Review
+                    </button>
+                </div>
+            </form>
+        </div>
     );
 }
